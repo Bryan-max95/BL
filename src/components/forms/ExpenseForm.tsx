@@ -1,0 +1,106 @@
+'use client';
+
+import { useState } from 'react';
+import Button from '@/components/ui/Button';
+
+export default function ExpenseForm({ onSubmit }: { onSubmit?: (data: any) => void }) {
+  const [formData, setFormData] = useState({
+    amount: '',
+    description: '',
+    date: new Date().toISOString().split('T')[0],
+    category: '',
+    type: 'personal',
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    onSubmit?.(formData);
+    setFormData({ amount: '', description: '', date: new Date().toISOString().split('T')[0], category: '', type: 'personal' });
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow">
+      <h2 className="text-xl font-bold mb-4">Add Expense</h2>
+
+      <div className="mb-4">
+        <label className="block text-sm font-medium mb-2">Type</label>
+        <select
+          name="type"
+          value={formData.type}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border rounded"
+          required
+        >
+          <option value="personal">Personal</option>
+          <option value="joint">Joint</option>
+        </select>
+      </div>
+
+      <div className="mb-4">
+        <label className="block text-sm font-medium mb-2">Amount</label>
+        <input
+          type="number"
+          name="amount"
+          value={formData.amount}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border rounded"
+          required
+        />
+      </div>
+
+      <div className="mb-4">
+        <label className="block text-sm font-medium mb-2">Description</label>
+        <input
+          type="text"
+          name="description"
+          value={formData.description}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border rounded"
+          required
+        />
+      </div>
+
+      <div className="mb-4">
+        <label className="block text-sm font-medium mb-2">Date</label>
+        <input
+          type="date"
+          name="date"
+          value={formData.date}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border rounded"
+          required
+        />
+      </div>
+
+      <div className="mb-6">
+        <label className="block text-sm font-medium mb-2">Category</label>
+        <select
+          name="category"
+          value={formData.category}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border rounded"
+          required
+        >
+          <option value="">Select a category</option>
+          <option value="food">Food</option>
+          <option value="transport">Transport</option>
+          <option value="utilities">Utilities</option>
+          <option value="entertainment">Entertainment</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <Button type="submit" variant="primary">
+        Add Expense
+      </Button>
+    </form>
+  );
+}

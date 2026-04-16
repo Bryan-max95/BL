@@ -1,21 +1,21 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { verifyToken } from './src/lib/auth';
+import { verifyEdgeToken } from './src/lib/auth-edge';
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const token = request.cookies.get('auth_token')?.value;
   const { pathname } = request.nextUrl;
 
   // Public routes
   if (pathname === '/login') {
-    if (token && verifyToken(token)) {
+    if (token && (await verifyEdgeToken(token))) {
       return NextResponse.redirect(new URL('/dashboard', request.url));
     }
     return NextResponse.next();
   }
 
   // Protected routes
-  if (!token || !verifyToken(token)) {
+  if (!token || !(await verifyEdgeToken(token))) {
     return NextResponse.redirect(new URL('/login', request.url));
   }
 

@@ -181,7 +181,7 @@ export default function PersonalPage() {
               onClick={() => fileInputRef.current?.click()}
               className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
             >
-              📄 Escanear factura / subir PDF
+               Escanear factura / subir PDF
             </button>
           </div>
           {pdfStatus && <p className="mt-2 text-sm text-gray-600">{pdfStatus}</p>}

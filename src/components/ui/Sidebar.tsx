@@ -6,15 +6,15 @@ import { usePathname } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 
 const MENU_ITEMS = [
-  { href: '/dashboard', label: 'Dashboard', icon: '📊' },
-  { href: '/savings', label: 'Ahorros', icon: '🏦' },
-  { href: '/personal', label: 'Finanzas Personales', icon: '👤' },
-  { href: '/joint', label: 'Finanzas Conjuntas', icon: '👫' },
-  { href: '/wedding', label: 'Boda', icon: '💍' },
-  { href: '/reports', label: 'Reportes', icon: '📈' },
-  { href: '/history', label: 'Historial', icon: '⏱️' },
-  { href: '/profile', label: 'Perfil', icon: '👤' },
-  { href: '/settings', label: 'Configuración', icon: '⚙️' },
+  { href: '/dashboard', label: 'Dashboard', icon: '' },
+  { href: '/savings', label: 'Ahorros', icon: '' },
+  { href: '/personal', label: 'Finanzas Personales', icon: '' },
+  { href: '/joint', label: 'Finanzas Conjuntas', icon: '' },
+  { href: '/wedding', label: 'Boda', icon: '' },
+  { href: '/reports', label: 'Reportes', icon: '' },
+  { href: '/history', label: 'Historial', icon: '' },
+  { href: '/profile', label: 'Perfil', icon: '' },
+  { href: '/settings', label: 'Configuración', icon: '' },
 ];
 
 export default function Sidebar() {
@@ -50,7 +50,7 @@ export default function Sidebar() {
         <div className="p-8 border-b border-white/10">
           <Link href="/dashboard" className="flex items-center gap-3 group">
             <div className="w-12 h-12 bg-gradient-to-br from-[#8B2E3C] to-[#A84D61] rounded-xl flex items-center justify-center text-2xl font-bold shadow-lg">
-              💰
+              
             </div>
             <div>
               <h1 className="text-2xl font-bold bg-gradient-to-r from-[#8B2E3C] to-[#A84D61] bg-clip-text text-transparent">
@@ -99,7 +99,7 @@ export default function Sidebar() {
             }}
             className="w-full px-5 py-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-medium rounded-lg transition-all duration-200 flex items-center justify-center gap-2"
           >
-            🚪 Cerrar Sesión
+             Cerrar Sesión
           </button>
         </div>
       </aside>

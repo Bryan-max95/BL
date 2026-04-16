@@ -8,8 +8,8 @@ import AppLayout from './AppLayout';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'FamilyFinance - Gestión Financiera Familiar',
-  description: 'Plataforma de gestión financiera para parejas',
+  title: 'FamilyFinance - bryan y lyndel',
+  description: 'Plataforma de gestión financiera para bryan y lyndel',
 };
 
 export default function RootLayout({
